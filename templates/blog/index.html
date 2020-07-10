@@ -1,0 +1,74 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block body %}
+
+    {% for list in lists.object_list %}
+
+
+
+        <article itemscope="" itemtype="https://schema.org/Article" class="post-block" lang="en">
+            <link itemprop="mainEntityOfPage" href="https://theme-next.js.org/next-8-0-0-rc-1-released/">
+
+            <span hidden="" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+      <meta itemprop="image" content="/images/logo.svg">
+      <meta itemprop="name" content="Theme NexT">
+      <meta itemprop="description" content="Stay Simple. Stay NexT.">
+    </span>
+
+            <span hidden="" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+      <meta itemprop="name" content="NexT">
+    </span>
+            <header class="post-header">
+                <h2 class="post-title" itemprop="name headline">
+
+                    <a href="{{ list.get_absolute_url }}" class="post-title-link" itemprop="url" data-pjax-state="">
+                        {{ list.title }}</a>
+                </h2>
+
+                <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发布于 </span>
+
+              <time title="{{ list.created_time }}" itemprop="dateCreated datePublished"
+              > {{ list.created_time }}</time>
+            </span>
+
+
+                    <span class="post-meta-item">
+
+      <span class="post-meta-item-icon">
+        <i class="fa fa-tags"></i>{% for tag in list.tags.all %}{{ tag.name }} {% endfor %}
+      </span>
+
+
+  </span>
+
+
+                </div>
+            </header>
+
+
+            <div class="post-body" itemprop="articleBody">
+
+
+                {{ list.excerpt }}
+
+
+            </div>
+
+
+            <footer class="post-footer">
+                <div class="post-eof"></div>
+            </footer>
+        </article>
+
+    {% endfor %}
+{% endblock %}
+
+{% block page %}
+        {{lists.render}}
+{% endblock %}

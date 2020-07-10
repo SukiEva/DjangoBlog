@@ -1,0 +1,110 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="content post posts-expand">
+        <article itemscope="" itemtype="https://schema.org/Article" class="post-block" lang="en">
+            <link itemprop="mainEntityOfPage" href="https://theme-next.js.org/next-8-0-0-rc-1-released/">
+            <span hidden="" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+            <meta itemprop="image" content="/images/logo.svg">
+            <meta itemprop="name" content="Theme NexT">
+            <meta itemprop="description" content="Stay Simple. Stay NexT.">
+            </span>
+            <span hidden="" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="NexT">
+            </span>
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">
+                    留言板
+                </h1>
+            </header>
+            <span class="post-body" itemprop="articleBody">
+                <span>
+
+                        <i class="fa fa-comment"></i> <b>
+                         {{ Total.count }}</b>个小伙伴在吐槽|{{ Total.count }}条评论
+                    {% for comment in all_messages.object_list %}
+                        <div style="border: dashed#202020">
+                            <h4 style="text-indent:0.5em;">Content:</h4>
+                                    <p style="text-indent:2em;"> {{ comment.text }}</p>
+
+                            <span style="color: #4e4e4e">
+                                <h5 style="text-indent:0.5em;">From：<a href="{{ comment.url }}">{{ comment.name }}</a></h5>
+
+                            </span>
+                            <span style="font-size: 15px; font-family: 华文楷体">
+                                <p style="text-indent:1em;">Post on: {{ comment.created_time }}</p>
+                            </span>
+
+                            </div>
+                        <br>
+                    {% endfor %}
+
+                </span>
+            </span>
+        </article>
+
+
+    </div>
+{% endblock %}
+
+{% block page %}
+
+    {{ all_messages.render }}
+    <article itemscope="" itemtype="https://schema.org/Article" class="post-block" lang="en">
+        <link itemprop="mainEntityOfPage" href="https://theme-next.js.org/next-8-0-0-rc-1-released/">
+        <span hidden="" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+            <meta itemprop="image" content="/images/logo.svg">
+            <meta itemprop="name" content="Theme NexT">
+            <meta itemprop="description" content="Stay Simple. Stay NexT.">
+            </span>
+        <span hidden="" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="NexT">
+            </span>
+
+
+        <h2 class="heading-w3-agile">留下你的足迹</h2>
+
+        <form action='/commentsboard/' method="post">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td width="150">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <input type="text" class="text" name="name" placeholder="昵称" required="">
+                    </td>
+                    <td width="150">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <input type="email" class="email" name="email" placeholder="邮箱">
+                    </td>
+                    <td width="150">
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                        <input type="url" class="text" name="url" placeholder="主页网址">
+                    </td>
+                </tr>
+            </table>
+            <p style="font-style:italic"> 写下你的留言吧~</p>
+            <div>
+                <textarea name="text" rows="5" style="width:100%;overflow:auto;word-break:break-all;"
+                          required="" placeholder="但盼风雨来，能留你在此......">
+                </textarea>
+            </div>
+            <p><input name="submit" type="submit" id="submit" value="BiuBiuBiu~" style="
+ color: #fff;
+background: #5e5e5e;
+border: none;
+width: 100%;
+padding: .8em 0em;
+outline: none;
+font-size: 1.1em;
+cursor: pointer;
+letter-spacing: 1px;
+text-transform: capitalize;
+-webkit-transition: 0.5s all;
+font-family: 'Roboto', sans-serif;
+margin-top: 1.5em;"></p>
+        </form>
+
+
+    </article>
+{% endblock %}

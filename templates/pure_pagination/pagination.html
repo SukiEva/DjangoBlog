@@ -1,0 +1,27 @@
+<nav class="pagination animated fadeIn">
+        {% if page_obj.has_previous %}
+            <a class="extend prev" rel="prev" href="?{{ page_obj.previous_page_number.querystring }}" data-pjax-state="">
+                <i class="fa fa-angle-left" aria-label="Previous page"></i></a>
+        {% else %}
+            <span class="disabled prev"><i class="fa fa-angle-left" aria-label="Previous page"></i></span>
+        {% endif %}
+        {% for page in page_obj.pages %}
+            {% if page %}
+                {% ifequal page page_obj.number %}
+                   <span class="page-number current">{{ page }}</span>
+                {% else %}
+                   <a class="page-number" href="?{{ page.querystring }}" data-pjax-state="">{{ page }}</a>
+                {% endifequal %}
+            {% else %}
+                ...
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a class="extend next" rel="next" href="?{{ page_obj.next_page_number.querystring }}" data-pjax-state="">
+                <i class="fa fa-angle-right" aria-label="Next page"></i></a>
+        {% else %}
+            <span class="disabled next"><i class="fa fa-angle-right" aria-label="Next page"></i></span>
+        {% endif %}
+</nav>
+
+

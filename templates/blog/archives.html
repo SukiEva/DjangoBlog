@@ -1,0 +1,52 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <div class="content archive">
+        <div class="post-block">
+            <div class="posts-collapse">
+                <div class="collection-title">
+                    <span class="collection-header">已经发布了{{ all_articles.count }}篇文章，继续加油哦！</span>
+                </div>
+
+                {% regroup all_articles by created_time.year as year_post_group %}
+                {% for year in year_post_group %}
+                    <div class="collection-year">
+                        <span class="collection-header">{{ year.grouper }}</span>
+                    </div>
+                    {% regroup year.list by created_time.month as month_post_group %}
+                    {% for month in month_post_group %}
+                        <div class="collection-year">
+                            <span class="collection-header">{{ month.grouper }}月</span>
+                        </div>
+                        {% for article in month.list %}
+                            <article>
+                                <header class="post-header">
+                                    <div class="post-meta">
+                                        <time itemprop="dateCreated" content="{{ article.created_time.date }}月{{ article.created_time.day }}日">
+                                            {{ article.created_time.month }}月{{ article.created_time.day }}日  {{ article.created_time.time }}
+                                        </time>
+                                    </div>
+
+                                    <div class="post-title">
+                                        <a class="post-title-link" href="{{ article.get_absolute_url }}" itemprop="url"
+                                           data-pjax-state="">
+                                            <span itemprop="name">{{ article.title }}</span>
+                                        </a>
+                                    </div>
+
+                                </header>
+                            </article>
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
