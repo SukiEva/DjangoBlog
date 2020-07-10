@@ -1,4 +1,3 @@
-@[TOC]
 ### 简介
 基于 Python 3.8 + django 3.0 的博客系统， 仿用了经典的[NextT](https://theme-next.js.org/)主题。
 
