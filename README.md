@@ -1,7 +1,6 @@
 ### 简介
 基于 Python 3.8 + django 3.0 的博客系统， 仿用了经典的[NextT](https://theme-next.js.org/)主题。
 
-Github下载地址：[https://github.com/FakerVi/Blog](https://github.com/FakerVi/Blog)
 #### 主要功能
 - 文章，分类，标签的添加，删除，编辑等。
 - 文章支持Markdown，支持代码高亮。
