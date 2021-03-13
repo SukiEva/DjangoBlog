@@ -69,4 +69,4 @@ createsuperuser
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200710224737864.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjQwMDA5,size_16,color_FFFFFF,t_70)
 
 ### PS：
-本人是个Django新手，此博客花费了一周时间开发，很多进阶功能没有加入进去，以后更新。
+学习作品
