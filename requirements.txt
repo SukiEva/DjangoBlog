@@ -21,7 +21,7 @@ MarkupPy==1.14
 mysqlclient==2.0.1
 odfpy==1.4.1
 openpyxl==3.0.4
-Pillow==7.2.0
+Pillow==8.1.1
 Pygments==2.6.1
 pytz==2020.1
 PyYAML==5.3.1
