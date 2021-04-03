@@ -24,7 +24,7 @@ openpyxl==3.0.4
 Pillow==8.1.1
 Pygments==2.7.4
 pytz==2020.1
-PyYAML==5.3.1
+PyYAML==5.4
 requests==2.24.0
 six==1.15.0
 sqlparse==0.3.1
